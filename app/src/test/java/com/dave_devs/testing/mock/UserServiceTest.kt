@@ -18,14 +18,26 @@ class UserServiceTest {
         MockitoAnnotations.initMocks(this)
         Mockito.`when`(
             userRepository.loginUser(anyString(), anyString())
-        ).thenReturn(LoginStatus.InvalidPassword)
+        ).thenReturn(LoginStatus.InvalidUser)
+
+        Mockito.`when`(
+            userRepository.loginUser("john@gmail.com", "asysfs2d6")
+        ).thenReturn(LoginStatus.Success)
+
         userService = UserService(userRepository)
     }
 
     @Test
-    fun testUserService() {
+    fun testUserService_returnInvalidUser() {
         val sut = userService
         val status = sut.loginUser("abc@gmail.com", "111111")
-        assertThat(status).isEqualTo("Invalid password")
+        assertThat(status).isEqualTo("User does not exist")
+    }
+
+    @Test
+    fun testUserService_returnLoginSuccess() {
+        val sut = userService
+        val status = sut.loginUser("john@gmail.com", "asysfs2d6")
+        assertThat(status).isEqualTo("Logged in successfully")
     }
 }

@@ -6,7 +6,6 @@ import androidx.test.core.app.ApplicationProvider
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.runBlocking
-import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
@@ -55,16 +54,16 @@ class QuotesManagerTest {
     }
 
     @Test(expected = JsonSyntaxException::class)
-    fun populateQuoteFromAssets_InvalidJson_return_Exception() = runBlocking {
+    fun populateQuoteFromAssets_InvalidJson_returnException() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         quotesManager.populateQuoteFromAssets(context, "malformed.json")
     }
 
     @Test
-    fun populateQuoteFromAssets_ValidJson_return_Count() = runBlocking {
+    fun populateQuoteFromAssets_ValidJson_returnCount() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         quotesManager.populateQuoteFromAssets(context, "quotes.json")
-        assertThat(quotesManager.quoteList.size).isEqualTo(7)
+        assertThat(quotesManager.quoteList.size).isEqualTo(9)
         //assertEquals(7, quotesManager.quoteList.size)
     }
 
@@ -91,7 +90,7 @@ class QuotesManagerTest {
                 Quote("This is first quote","Author4"),
             ))
         val quote = quotesManager.getNextQuote()
-        assertThat("Author2").isEqualTo(quote.author)
+        assertThat("Author2").isEqualTo(quote.author[1])
     }
 
     @Test

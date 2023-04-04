@@ -20,17 +20,22 @@ class QuoteDaoTest {
 
     @Before
     fun setUp() {
+
         quoteDatabase = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
             QuoteDatabase::class.java
         ).allowMainThreadQueries().build()
+
         quoteDao = quoteDatabase.dao()
+
     }
 
     @Test
     fun insertQuote_expectedSingleQuote() = runBlocking {
         val quote = Quote(0, "This is text quote", "Author1")
+        //Insert Quote
         quoteDao.insertQuote(quote)
+
         val result = quoteDao.getQuotes().getOrAwaitValue()
 
         assertThat(result.size).isEqualTo(1)
@@ -44,9 +49,21 @@ class QuoteDaoTest {
         quoteDao.insertQuote(quote)
         //Delete Quote
         quoteDao.delete()
+
         val result = quoteDao.getQuotes().getOrAwaitValue()
 
         assertThat(result.size).isEqualTo(0)
+    }
+
+    @Test
+    fun getQuote_returnQuoteById() = runBlocking {
+        val quote = Quote(0, "This is text quote", "Author3")
+        //Insert Quote
+        quoteDao.insertQuote(quote)
+
+        val result = quoteDao.getQuotesById(0)
+
+        assertThat(result.id).isEqualTo(0)
     }
 
     @After

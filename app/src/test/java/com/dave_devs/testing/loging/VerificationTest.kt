@@ -22,7 +22,7 @@ class VerificationTest {
     @Test
     fun validatePassword_lessThanTwenty() {
         val sut = verification.validatePassword( "password/validation/1234")
-        assertThat(sut).isEqualTo( "Input can should be less than twenty")
+        assertThat(sut).isEqualTo( "Input should be less than twenty")
     }
 
     @Test

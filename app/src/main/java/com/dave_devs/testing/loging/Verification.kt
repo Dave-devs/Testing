@@ -7,7 +7,7 @@ class Verification {
             "Password can not be empty"
         }
         input.length > 20 -> {
-            "Input can should be less than twenty"
+            "Input should be less than twenty"
         }
         input.length < 8 -> {
             "Input should be greater than eight"

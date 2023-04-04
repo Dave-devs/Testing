@@ -1,8 +1,6 @@
 package com.dave_devs.testing.util
 
-import com.dave_devs.testing.util.Sample
 import com.google.common.truth.Truth.assertThat
-import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
@@ -26,10 +24,5 @@ class SampleTest {
         val result = sample.isPalladium("level")
 
         assertThat(result).isEqualTo(true)
-    }
-
-    @After
-    fun tearDown() {
-        //To shut down your test item after testing
     }
 }

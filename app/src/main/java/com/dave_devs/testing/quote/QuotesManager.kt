@@ -12,8 +12,8 @@ class QuotesManager {
         val inputStream = context.assets.open(fileName) //Get access to the asset directory(quote.json) and open
         val size: Int = inputStream.available() //Get all available data/byte data in asset directory(quote.json)
         val buffer = ByteArray(size) //Creates a new array of the specified size, with all elements initialized to zero.
-        inputStream.read(buffer)
-        inputStream.close()
+        inputStream.read(buffer) //Reads some number of bytes from the input stream and stores them into the buffer array b(int).
+        inputStream.close() //Closes this input stream and releases any system resources associated with the stream.
         val json = String(buffer, Charsets.UTF_8)
         val gson = Gson()
         quoteList = gson.fromJson(json, Array<Quote>::class.java)
