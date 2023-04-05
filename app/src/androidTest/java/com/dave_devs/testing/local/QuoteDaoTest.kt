@@ -1,4 +1,4 @@
-package com.dave_devs.testing.room
+package com.dave_devs.testing.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
@@ -38,8 +38,7 @@ class QuoteDaoTest {
 
         val result = quoteDao.getQuotes().getOrAwaitValue()
 
-        assertThat(result.size).isEqualTo(1)
-        assertThat(result[0].text).isEqualTo("This is text quote")
+        assertThat(result).contains(quote)
     }
 
     @Test
@@ -52,7 +51,7 @@ class QuoteDaoTest {
 
         val result = quoteDao.getQuotes().getOrAwaitValue()
 
-        assertThat(result.size).isEqualTo(0)
+        assertThat(result).doesNotContain(quote)
     }
 
     @Test
@@ -63,7 +62,7 @@ class QuoteDaoTest {
 
         val result = quoteDao.getQuotesById(0)
 
-        assertThat(result.id).isEqualTo(0)
+        assertThat(result).isEqualTo(quote)
     }
 
     @After

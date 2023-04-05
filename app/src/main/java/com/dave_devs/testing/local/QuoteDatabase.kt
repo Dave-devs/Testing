@@ -1,4 +1,4 @@
-package com.dave_devs.testing.room
+package com.dave_devs.testing.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

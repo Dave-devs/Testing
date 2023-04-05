@@ -1,8 +1,7 @@
-package com.dave_devs.testing.room
+package com.dave_devs.testing.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuoteDao {
