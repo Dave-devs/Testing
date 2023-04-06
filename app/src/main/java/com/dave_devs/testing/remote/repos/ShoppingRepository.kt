@@ -2,8 +2,8 @@ package com.dave_devs.testing.remote.repos
 
 import androidx.lifecycle.LiveData
 import com.dave_devs.testing.local.ShoppingItem
-import com.dave_devs.testing.remote.ImageResponse
 import com.dave_devs.testing.remote.resource_class.Resource
+import com.dave_devs.testing.remote.response.ImageResponse
 
 interface ShoppingRepository {
 

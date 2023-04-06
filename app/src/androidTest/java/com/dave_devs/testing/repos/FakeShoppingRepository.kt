@@ -3,9 +3,9 @@ package com.dave_devs.testing.repos
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dave_devs.testing.local.ShoppingItem
-import com.dave_devs.testing.remote.ImageResponse
 import com.dave_devs.testing.remote.repos.ShoppingRepository
 import com.dave_devs.testing.remote.resource_class.Resource
+import com.dave_devs.testing.remote.response.ImageResponse
 
 /*
 Class to test ViewModel cos ViewModel take repository
