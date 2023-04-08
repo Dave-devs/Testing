@@ -13,15 +13,15 @@ class SampleTest {
     }
 
     @Test
-    fun isPalladium() {
-        val result = sample.isPalladium("hello")
+    fun isPalindrome() {
+        val result = sample.isPalindrome("hello")
 
         assertThat(result).isEqualTo(false)
     }
 
     @Test
-    fun isPalladium_inputString_level_expectedTrue() {
-        val result = sample.isPalladium("level")
+    fun isPalindrome_inputString_level_expectedTrue() {
+        val result = sample.isPalindrome("level")
 
         assertThat(result).isEqualTo(true)
     }
