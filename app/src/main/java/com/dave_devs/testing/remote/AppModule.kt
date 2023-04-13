@@ -18,12 +18,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePixabayApi(): PixabayApi {
+    fun providePixabayApi(): com.dave_devs.testing.repos.PixabayApi {
         return Retrofit.Builder()
             .baseUrl("https://pixabay.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(PixabayApi::class.java)
+            .create(com.dave_devs.testing.repos.PixabayApi::class.java)
     }
 
     @Provides

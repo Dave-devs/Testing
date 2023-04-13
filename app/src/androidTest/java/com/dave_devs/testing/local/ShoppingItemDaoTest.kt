@@ -16,6 +16,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class) //This make sure this test run with JVM cos we run it on AndroidTest Directory.
 @SmallTest
+@OptIn(ExperimentalCoroutinesApi::class)
 class ShoppingItemDaoTest {
 
     @get:Rule
@@ -36,7 +37,11 @@ class ShoppingItemDaoTest {
         dao = database.dao()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
+    @After
+    fun tearDown() {
+        database.close()
+    }
+
     @Test
     fun testInsertItem_expectedSingleItem() = runTest {
         val item = ShoppingItem(1, "Banana",5, 3.00f, "https://fakeurl.com")
@@ -47,7 +52,6 @@ class ShoppingItemDaoTest {
         assertThat(result).contains(item)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun testDeleteItem_expectedNoItem() = runTest {
         val item = ShoppingItem(1, "Banana",5, 3.00f, "https://fakeurl.com")
@@ -59,7 +63,6 @@ class ShoppingItemDaoTest {
         assertThat(result).doesNotContain(item)
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun testGetItemTotalSum_returnItemTotalSum() = runTest {
         val item1 = ShoppingItem(1, "Banana",5, 3.00f, "https://fakeurl.com")
@@ -75,8 +78,5 @@ class ShoppingItemDaoTest {
         assertThat(sum).isEqualTo(5 * 3.00f + 7 * 24.99f + 2 * 9.99f)
     }
 
-    @After
-    fun tearDown() {
-        database.close()
-    }
+
 }

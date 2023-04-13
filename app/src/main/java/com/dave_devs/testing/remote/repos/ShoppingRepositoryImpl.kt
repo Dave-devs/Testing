@@ -3,7 +3,7 @@ package com.dave_devs.testing.remote.repos
 import androidx.lifecycle.LiveData
 import com.dave_devs.testing.local.ShoppingDao
 import com.dave_devs.testing.local.ShoppingItem
-import com.dave_devs.testing.remote.PixabayApi
+import com.dave_devs.testing.repos.PixabayApi
 import com.dave_devs.testing.remote.resource_class.Resource
 import com.dave_devs.testing.remote.response.ImageResponse
 import retrofit2.HttpException
@@ -11,7 +11,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class ShoppingRepositoryImpl @Inject constructor(
-    private val api: PixabayApi,
+    private val api: com.dave_devs.testing.repos.PixabayApi,
     private val dao: ShoppingDao
 ): ShoppingRepository {
 
